@@ -1,0 +1,818 @@
+2018-07-10 20:35:34 [scrapy.core.scraper] ERROR: Spider error processing <GET https://item.taobao.com/item.htm?id=572072662504&ns=1&abbucket=15#detail> (referer: https://s.taobao.com/list?q=T%E6%81%A4&cat=16&seller_type=taobao&oetag=6745&source=qiangdiao&spm=a219r.lmn002.1000187.1)
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\spiders\tb.py", line 65, in parse_html
+    name = re.findall('<h3.*?data-title="(.*?)">',response)[0]
+  File "e:\anconda\lib\re.py", line 222, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
+2018-07-10 21:42:10 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 958, in connect
+    **kwargs)
+  File "e:\anconda\lib\socket.py", line 724, in create_connection
+    raise err
+  File "e:\anconda\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\scrapy\crawler.py", line 82, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '192.168.45.30' (timed out)")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 26, in close_spider
+    self.db.close()
+AttributeError: 'TaobaoPipeline' object has no attribute 'db'
+2018-07-10 21:42:10 [twisted] CRITICAL: Unhandled error in Deferred:
+2018-07-10 21:42:10 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 958, in connect
+    **kwargs)
+  File "e:\anconda\lib\socket.py", line 724, in create_connection
+    raise err
+  File "e:\anconda\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "e:\anconda\lib\site-packages\scrapy\crawler.py", line 82, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '192.168.45.30' (timed out)")
+2018-07-10 21:54:59 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i3/99050820/TB2Q_ldxNSYBuNjSsphXXbGvVXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB2O.0MxKOSBuNjy0FdXXbDnVXa_!!99050820.jpg,//gd3.alicdn.com/imgextra/i3/99050820/TB2xQN4xL5TBuNjSspmXXaDRVXa_!!99050820.jpg,//gd3.alicdn.com/imgextra/i3/99050820/TB2C3lZxKuSBuNjy1XcXXcYjFXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB2w77zplyWBuNkSmFPXXXguVXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB1ySZBplyWBuNkSmFPXXXguVXa_!!0-item_pic.jpg',
+ 'name': '简约既是大气真丝黑色t恤女夏新款中袖上衣纯色洋气短袖宽松潮',
+ 'x_price': '',
+ 'y_price': '299.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '简约既是大气真丝黑色t恤女夏新款中袖上衣纯色' for key 'PRIMARY'")
+2018-07-10 21:54:59 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i3/99050820/TB2Q_ldxNSYBuNjSsphXXbGvVXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB2O.0MxKOSBuNjy0FdXXbDnVXa_!!99050820.jpg,//gd3.alicdn.com/imgextra/i3/99050820/TB2xQN4xL5TBuNjSspmXXaDRVXa_!!99050820.jpg,//gd3.alicdn.com/imgextra/i3/99050820/TB2C3lZxKuSBuNjy1XcXXcYjFXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB2w77zplyWBuNkSmFPXXXguVXa_!!99050820.jpg,//gd1.alicdn.com/imgextra/i1/99050820/TB1ySZBplyWBuNkSmFPXXXguVXa_!!0-item_pic.jpg',
+ 'name': '简约既是大气真丝黑色t恤女夏新款中袖上衣纯色洋气短袖宽松潮',
+ 'x_price': '',
+ 'y_price': '299.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '简约既是大气真丝黑色t恤女夏新款中袖上衣纯色' for key 'PRIMARY'")
+2018-07-10 21:54:59 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i3/2997464543/TB2CJ58tuuSBuNjSsziXXbq8pXa_!!2997464543.jpg,//gd1.alicdn.com/imgextra/i1/2997464543/TB2qdt.gLImBKNjSZFlXXc43FXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB21fIgzSBYBeNjy0FeXXbnmFXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB267Tdtr9YBuNjy0FgXXcxcXXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB2HtrWiHorBKNjSZFjXXc_SpXa_!!2997464543.jpg,//gd1.alicdn.com/imgextra/i1/2997464543/TB1r5HTtv1TBuNjy0FjXXajyXXa_!!0-item_pic.jpg',
+ 'name': '2018新款抽绳收身V领短袖夏季韩范短款上衣女小心机冰丝T恤女黑色',
+ 'x_price': '129.00',
+ 'y_price': '184.29'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'imgs_url' at row 1")
+2018-07-10 21:54:59 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i3/2997464543/TB2CJ58tuuSBuNjSsziXXbq8pXa_!!2997464543.jpg,//gd1.alicdn.com/imgextra/i1/2997464543/TB2qdt.gLImBKNjSZFlXXc43FXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB21fIgzSBYBeNjy0FeXXbnmFXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB267Tdtr9YBuNjy0FgXXcxcXXa_!!2997464543.jpg,//gd2.alicdn.com/imgextra/i2/2997464543/TB2HtrWiHorBKNjSZFjXXc_SpXa_!!2997464543.jpg,//gd1.alicdn.com/imgextra/i1/2997464543/TB1r5HTtv1TBuNjy0FjXXajyXXa_!!0-item_pic.jpg',
+ 'name': '2018新款抽绳收身V领短袖夏季韩范短款上衣女小心机冰丝T恤女黑色',
+ 'x_price': '129.00',
+ 'y_price': '184.29'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'imgs_url' at row 1")
+2018-07-10 21:56:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd4.alicdn.com/imgextra/i1/433595433/TB22wY6w1GSBuNjSspbXXciipXa_!!433595433.jpg,//gd1.alicdn.com/imgextra/i1/433595433/TB2nXa1inqWBKNjSZFAXXanSpXa_!!433595433.jpg,//gd3.alicdn.com/imgextra/i3/433595433/TB2K1rhv7OWBuNjSsppXXXPgpXa_!!433595433.jpg,//gd1.alicdn.com/imgextra/i1/433595433/TB2_PSPv1uSBuNjSsplXXbe8pXa_!!433595433.jpg,//gd4.alicdn.com/imgextra/i4/433595433/TB2jEErhtknBKNjSZKPXXX6OFXa_!!433595433.jpg',
+ 'name': '雪纺衫短袖女夏2018新款韩范显瘦洋气小衫飘逸雪纺上衣超仙甜美',
+ 'x_price': '69.00',
+ 'y_price': '138.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '雪纺衫短袖女夏2018新款韩范显瘦洋气小衫飘逸雪' for key 'PRIMARY'")
+2018-07-10 21:56:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd4.alicdn.com/imgextra/i1/433595433/TB22wY6w1GSBuNjSspbXXciipXa_!!433595433.jpg,//gd1.alicdn.com/imgextra/i1/433595433/TB2nXa1inqWBKNjSZFAXXanSpXa_!!433595433.jpg,//gd3.alicdn.com/imgextra/i3/433595433/TB2K1rhv7OWBuNjSsppXXXPgpXa_!!433595433.jpg,//gd1.alicdn.com/imgextra/i1/433595433/TB2_PSPv1uSBuNjSsplXXbe8pXa_!!433595433.jpg,//gd4.alicdn.com/imgextra/i4/433595433/TB2jEErhtknBKNjSZKPXXX6OFXa_!!433595433.jpg',
+ 'name': '雪纺衫短袖女夏2018新款韩范显瘦洋气小衫飘逸雪纺上衣超仙甜美',
+ 'x_price': '69.00',
+ 'y_price': '138.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '雪纺衫短袖女夏2018新款韩范显瘦洋气小衫飘逸雪' for key 'PRIMARY'")
+2018-07-10 21:56:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i4/1030119738/TB2oevBxMmTBuNjy1XbXXaMrVXa_!!1030119738.jpg,//gd2.alicdn.com/imgextra/i2/1030119738/TB29iwkimYTBKNjSZKbXXXJ8pXa_!!1030119738.jpg,//gd3.alicdn.com/imgextra/i3/1030119738/TB2Sob.xHSYBuNjSspiXXXNzpXa_!!1030119738.jpg,//gd3.alicdn.com/imgextra/i3/1030119738/TB2UlZfidknBKNjSZKPXXX6OFXa_!!1030119738.jpg,//gd3.alicdn.com/imgextra/i3/1030119738/TB28Garx79WBuNjSspeXXaz5VXa_!!1030119738.jpg',
+ 'name': 'ins超火短袖白衬衫女甜美荷叶边订珠镶钻港风雪纺上衣2018夏季新',
+ 'x_price': '129.00',
+ 'y_price': '188.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'ins超火短袖白衬衫女甜美荷叶边订珠镶钻港风雪' for key 'PRIMARY'")
+2018-07-10 21:56:55 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i2/480241348/TB2oc1iiOCYBuNkSnaVXXcMsVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i2/480241348/TB2FcGYq3mTBuNjy1XbXXaMrVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i3/480241348/TB2M8TVqY5YBuNjSspoXXbeNFXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i1/480241348/TB29UvEq1SSBuNjy0FlXXbBpVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i3/480241348/TB2MyPXqYSYBuNjSspiXXXNzpXa_!!480241348.jpg',
+ 'name': '2018夏季新款韩版超薄学生雪纺防晒衣中长款宽松开衫外套女防晒服',
+ 'x_price': '',
+ 'y_price': '89.90'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '2018夏季新款韩版超薄学生雪纺防晒衣中长款宽松' for key 'PRIMARY'")
+2018-07-10 21:58:05 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i2/480241348/TB2oc1iiOCYBuNkSnaVXXcMsVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i2/480241348/TB2FcGYq3mTBuNjy1XbXXaMrVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i3/480241348/TB2M8TVqY5YBuNjSspoXXbeNFXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i1/480241348/TB29UvEq1SSBuNjy0FlXXbBpVXa_!!480241348.jpg,https://img.alicdn.com/imgextra/i3/480241348/TB2MyPXqYSYBuNjSspiXXXNzpXa_!!480241348.jpg',
+ 'name': '2018夏季新款韩版超薄学生雪纺防晒衣中长款宽松开衫外套女防晒服',
+ 'x_price': '',
+ 'y_price': '89.90'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '2018夏季新款韩版超薄学生雪纺防晒衣中长款宽松' for key 'PRIMARY'")
+2018-07-10 21:58:29 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i3/285892163/TB2JNyoDuuSBuNjy1XcXXcYjFXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i4/285892163/TB2UsvNdMZC2uNjSZFnXXaxZpXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i2/285892163/TB25uAkir3nBKNjSZFMXXaUSFXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2_k0fyASWBuNjSszdXXbeSpXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2alYFykKWBuNjy1zjXXcOypXa_!!285892163.jpg',
+ 'name': '一字肩上衣女夏2018新款韩版超仙甜美洋气露肩格子吊带短袖雪纺衫',
+ 'x_price': '63.00',
+ 'y_price': '88.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '一字肩上衣女夏2018新款韩版超仙甜美洋气露肩格' for key 'PRIMARY'")
+2018-07-10 21:58:29 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i3/285892163/TB2JNyoDuuSBuNjy1XcXXcYjFXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i4/285892163/TB2UsvNdMZC2uNjSZFnXXaxZpXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i2/285892163/TB25uAkir3nBKNjSZFMXXaUSFXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2_k0fyASWBuNjSszdXXbeSpXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2alYFykKWBuNjy1zjXXcOypXa_!!285892163.jpg',
+ 'name': '一字肩上衣女夏2018新款韩版超仙甜美洋气露肩格子吊带短袖雪纺衫',
+ 'x_price': '63.00',
+ 'y_price': '88.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '一字肩上衣女夏2018新款韩版超仙甜美洋气露肩格' for key 'PRIMARY'")
+2018-07-10 21:58:29 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/bao/uploaded/i1/479184430/TB20Vy5DpmWBuNjSspdXXbugXXa_!!479184430.jpg,https://img.alicdn.com/imgextra/i1/479184430/TB24G6cuStYBeNjSspaXXaOOFXa_!!479184430.jpg,https://img.alicdn.com/imgextra/i1/479184430/TB2vkz2mlyWBuNkSmFPXXXguVXa_!!479184430.jpg,https://img.alicdn.com/imgextra/i1/479184430/TB2v3RAuKuSBuNjSsziXXbq8pXa_!!479184430.jpg,https://img.alicdn.com/imgextra/i3/479184430/TB2GPVvuL9TBuNjy1zbXXXpepXa_!!479184430.jpg',
+ 'name': 'MG小象无袖雪纺上衣女夏2018新款甜美小清新蕾丝衫气质显瘦打底衫',
+ 'x_price': '59.00',
+ 'y_price': '118.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'MG小象无袖雪纺上衣女夏2018新款甜美小清新蕾丝' for key 'PRIMARY'")
+2018-07-10 21:59:52 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i4/0/TB1bVtsDQSWBuNjSszdXXbeSpXa_!!0-item_pic.jpg,//gd3.alicdn.com/imgextra/i3/479184430/TB205nMfiCYBuNkSnaVXXcMsVXa_!!479184430.jpg,//gd3.alicdn.com/imgextra/i3/479184430/TB2JOF5nNGYBuNjy0FnXXX5lpXa_!!479184430.jpg,//gd1.alicdn.com/imgextra/i1/479184430/TB2tU3KnuuSBuNjSsplXXbe8pXa_!!479184430.jpg,//gd3.alicdn.com/imgextra/i3/479184430/TB28CA6npuWBuNjSszbXXcS7FXa_!!479184430.jpg,//gd1.alicdn.com/imgextra/i1/479184430/TB1rKZ6nqSWBuNjSsrbXXa0mVXa_!!0-item_pic.jpg',
+ 'name': 'MG小象露肩雪纺衬衫女2018夏季新款小清新宽松上衣条纹短袖衬衣潮',
+ 'x_price': '79.00',
+ 'y_price': '158.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'MG小象露肩雪纺衬衫女2018夏季新款小清新宽松上' for key 'PRIMARY'")
+2018-07-10 22:00:28 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i3/831475896/TB2dFr9qAyWBuNjy0FpXXassXXa_!!831475896.jpg,//gd2.alicdn.com/imgextra/i2/831475896/TB2MZIKqHGYBuNjy0FoXXciBFXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i1/831475896/TB2UvKcqTtYBeNjy1XdXXXXyVXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i1/831475896/TB272aPigKTBuNkSne1XXaJoXXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i4/TB1Rf7rrNSYBuNjSspjYXF73VXa_M2.SS2,//gd1.alicdn.com/imgextra/i1/831475896/TB1mUIIskyWBuNjy0FpXXassXXa_!!0-item_pic.jpg',
+ 'name': '空调衫女夏季新款韩版宽松雪纺开衫女灯笼袖披肩薄款短外套防晒衣',
+ 'x_price': '35.00',
+ 'y_price': '99.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '空调衫女夏季新款韩版宽松雪纺开衫女灯笼袖披' for key 'PRIMARY'")
+2018-07-10 22:00:28 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i3/831475896/TB2dFr9qAyWBuNjy0FpXXassXXa_!!831475896.jpg,//gd2.alicdn.com/imgextra/i2/831475896/TB2MZIKqHGYBuNjy0FoXXciBFXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i1/831475896/TB2UvKcqTtYBeNjy1XdXXXXyVXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i1/831475896/TB272aPigKTBuNkSne1XXaJoXXa_!!831475896.jpg,//gd1.alicdn.com/imgextra/i4/TB1Rf7rrNSYBuNjSspjYXF73VXa_M2.SS2,//gd1.alicdn.com/imgextra/i1/831475896/TB1mUIIskyWBuNjy0FpXXassXXa_!!0-item_pic.jpg',
+ 'name': '空调衫女夏季新款韩版宽松雪纺开衫女灯笼袖披肩薄款短外套防晒衣',
+ 'x_price': '35.00',
+ 'y_price': '99.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '空调衫女夏季新款韩版宽松雪纺开衫女灯笼袖披' for key 'PRIMARY'")
+2018-07-10 22:00:28 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i2/407271893/TB2KvaCq_JYBeNjy1zeXXahzVXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2LPdkpgaTBuNjSszfXXXgfpXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2d5xVvVOWBuNjy0FiXXXFxVXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB2ClScphSYBuNjSspjXXX73VXa_!!407271893.jpg,//gd4.alicdn.com/imgextra/i4/407271893/TB2JWkZpb5YBuNjSspoXXbeNFXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB1XK4sqWmWBuNjy1XaXXXCbXXa_!!0-item_pic.jpg',
+ 'name': '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃衫一字肩甜美上衣',
+ 'x_price': '49.98',
+ 'y_price': '116.65'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃' for key 'PRIMARY'")
+2018-07-10 22:00:28 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i2/407271893/TB2KvaCq_JYBeNjy1zeXXahzVXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2LPdkpgaTBuNjSszfXXXgfpXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2d5xVvVOWBuNjy0FiXXXFxVXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB2ClScphSYBuNjSspjXXX73VXa_!!407271893.jpg,//gd4.alicdn.com/imgextra/i4/407271893/TB2JWkZpb5YBuNjSspoXXbeNFXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB1XK4sqWmWBuNjy1XaXXXCbXXa_!!0-item_pic.jpg',
+ 'name': '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃衫一字肩甜美上衣',
+ 'x_price': '49.98',
+ 'y_price': '116.65'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃' for key 'PRIMARY'")
+2018-07-10 22:01:26 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i2/407271893/TB2KvaCq_JYBeNjy1zeXXahzVXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2LPdkpgaTBuNjSszfXXXgfpXa_!!407271893.jpg,//gd2.alicdn.com/imgextra/i2/407271893/TB2d5xVvVOWBuNjy0FiXXXFxVXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB2ClScphSYBuNjSspjXXX73VXa_!!407271893.jpg,//gd4.alicdn.com/imgextra/i4/407271893/TB2JWkZpb5YBuNjSspoXXbeNFXa_!!407271893.jpg,//gd3.alicdn.com/imgextra/i3/407271893/TB1XK4sqWmWBuNjy1XaXXXCbXXa_!!0-item_pic.jpg',
+ 'name': '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃衫一字肩甜美上衣',
+ 'x_price': '49.98',
+ 'y_price': '116.65'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '宽松遮肚子短袖雪纺衫女夏2018新款chic洋气娃娃' for key 'PRIMARY'")
+2018-07-10 22:01:26 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i4/2103587316/TB2Qmu7nf5TBuNjSspmXXaDRVXa_!!2103587316.jpg,//gd1.alicdn.com/imgextra/i1/2103587316/TB2g9mRlWSWBuNjSsrbXXa0mVXa_!!2103587316.jpg,//gd2.alicdn.com/imgextra/i2/2103587316/TB2eBNBdScqBKNjSZFgXXX_kXXa_!!2103587316.jpg,//gd4.alicdn.com/imgextra/i4/2103587316/TB2GE5yl41YBuNjy1zcXXbNcXXa_!!2103587316.jpg,//gd2.alicdn.com/imgextra/i2/2103587316/TB2E_kenamWBuNjy1XaXXXCbXXa_!!2103587316.jpg,//gd1.alicdn.com/imgextra/i1/2103587316/TB1MInmdSMmBKNjSZTEXXasKpXa_!!0-item_pic.jpg',
+ 'name': '张大奕钉珠拼接上衣2018夏新款一字领宽松甜美系带长袖套头雪纺衫',
+ 'x_price': '179.99',
+ 'y_price': '199.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'imgs_url' at row 1")
+2018-07-10 22:01:49 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i4/2103587316/TB2Qmu7nf5TBuNjSspmXXaDRVXa_!!2103587316.jpg,//gd1.alicdn.com/imgextra/i1/2103587316/TB2g9mRlWSWBuNjSsrbXXa0mVXa_!!2103587316.jpg,//gd2.alicdn.com/imgextra/i2/2103587316/TB2eBNBdScqBKNjSZFgXXX_kXXa_!!2103587316.jpg,//gd4.alicdn.com/imgextra/i4/2103587316/TB2GE5yl41YBuNjy1zcXXbNcXXa_!!2103587316.jpg,//gd2.alicdn.com/imgextra/i2/2103587316/TB2E_kenamWBuNjy1XaXXXCbXXa_!!2103587316.jpg,//gd1.alicdn.com/imgextra/i1/2103587316/TB1MInmdSMmBKNjSZTEXXasKpXa_!!0-item_pic.jpg',
+ 'name': '张大奕钉珠拼接上衣2018夏新款一字领宽松甜美系带长袖套头雪纺衫',
+ 'x_price': '179.99',
+ 'y_price': '199.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'imgs_url' at row 1")
+2018-07-10 22:01:49 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i4/285892163/TB2fc8qCQCWBuNjy0FaXXXUlXXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB23ZyLp3mTBuNjy1XbXXaMrVXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2_q4_qf1TBuNjy0FjXXajyXXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i3/285892163/TB2td2Up4SYBuNjSspjXXX73VXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i3/285892163/TB2aF3Tp9tYBeNjSspkXXbU8VXa_!!285892163.jpg',
+ 'name': '雪纺白衬衫女长袖夏装2018新款防晒开衫上衣服中长款超火bf薄外套',
+ 'x_price': '89.60',
+ 'y_price': '112.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '雪纺白衬衫女长袖夏装2018新款防晒开衫上衣服中' for key 'PRIMARY'")
+2018-07-10 22:02:46 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i4/285892163/TB2fc8qCQCWBuNjy0FaXXXUlXXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB23ZyLp3mTBuNjy1XbXXaMrVXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i1/285892163/TB2_q4_qf1TBuNjy0FjXXajyXXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i3/285892163/TB2td2Up4SYBuNjSspjXXX73VXa_!!285892163.jpg,https://img.alicdn.com/imgextra/i3/285892163/TB2aF3Tp9tYBeNjSspkXXbU8VXa_!!285892163.jpg',
+ 'name': '雪纺白衬衫女长袖夏装2018新款防晒开衫上衣服中长款超火bf薄外套',
+ 'x_price': '89.60',
+ 'y_price': '112.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '雪纺白衬衫女长袖夏装2018新款防晒开衫上衣服中' for key 'PRIMARY'")
+2018-07-10 22:02:46 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i3/3319438591/TB2RD2WnDdYBeNkSmLyXXXfnVXa_!!3319438591.jpg,//gd4.alicdn.com/imgextra/i4/3319438591/TB2LfJlv4SYBuNjSspjXXX73VXa_!!3319438591.jpg,//gd4.alicdn.com/imgextra/i4/3319438591/TB2aoXev7CWBuNjy0FaXXXUlXXa_!!3319438591.jpg,//gd4.alicdn.com/imgextra/i4/3319438591/TB2rHl1v4WYBuNjy1zkXXXGGpXa_!!3319438591.jpg,//gd3.alicdn.com/imgextra/i3/3319438591/TB25hgQvL5TBuNjSspcXXbnGFXa_!!3319438591.jpg,//gd2.alicdn.com/imgextra/i2/3319438591/TB1Q.xev7CWBuNjy0FaXXXUlXXa_!!0-item_pic.jpg',
+ 'name': 'sodu 雪纺衬衫女防晒服女外套薄款衬衫女宽松ins超火的衬衫女',
+ 'y_price': '99.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 33, in process_item
+    item['x_price'],
+  File "e:\anconda\lib\site-packages\scrapy\item.py", line 59, in __getitem__
+    return self._values[key]
+KeyError: 'x_price'
+2018-07-10 22:02:46 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd3.alicdn.com/imgextra/i2/1037811875/TB2TrSHAY1YBuNjSszeXXablFXa_!!1037811875.jpg,//gd1.alicdn.com/imgextra/i1/1037811875/TB2so9xA9BYBeNjy0FeXXbnmFXa_!!1037811875.jpg,//gd2.alicdn.com/imgextra/i2/1037811875/TB2bcLcAY9YBuNjy0FgXXcxcXXa_!!1037811875.jpg,//gd2.alicdn.com/imgextra/i2/1037811875/TB22DhPBYSYBuNjSspiXXXNzpXa_!!1037811875.jpg,//gd3.alicdn.com/imgextra/i3/1037811875/TB2ETpuB7yWBuNjy0FpXXassXXa_!!1037811875.jpg,//gd2.alicdn.com/imgextra/i2/1037811875/TB1ZQGKjSYTBKNjSZKbXXXJ8pXa_!!0-item_pic.jpg',
+ 'name': 'sukol小清新不规则心机吊带V领连衣裙雪纺内搭两件套夏装新款裙子',
+ 'x_price': '',
+ 'y_price': '239.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'imgs_url' at row 1")
+2018-07-10 22:02:46 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i4/542808478/TB2BXVJhr5YBuNjSspoXXbeNFXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i2/542808478/TB2ArVecXkoBKNjSZFkXXb4tFXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i3/542808478/TB2Fcs2hbSYBuNjSspiXXXNzpXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i2/542808478/TB2aG0gl4uTBuNkHFNRXXc9qpXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i3/542808478/TB2JDOWuMmTBuNjy1XbXXaMrVXa_!!542808478.jpg',
+ 'name': '防晒风衣女中长款韩版2018新款夏季宽松开衫单外套薄款雪纺风衣女',
+ 'x_price': '169.00-189.00',
+ 'y_price': '248.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'x_price' at row 1")
+2018-07-10 22:03:44 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': 'https://img.alicdn.com/imgextra/i4/542808478/TB2BXVJhr5YBuNjSspoXXbeNFXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i2/542808478/TB2ArVecXkoBKNjSZFkXXb4tFXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i3/542808478/TB2Fcs2hbSYBuNjSspiXXXNzpXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i2/542808478/TB2aG0gl4uTBuNkHFNRXXc9qpXa_!!542808478.jpg,https://img.alicdn.com/imgextra/i3/542808478/TB2JDOWuMmTBuNjy1XbXXaMrVXa_!!542808478.jpg',
+ 'name': '防晒风衣女中长款韩版2018新款夏季宽松开衫单外套薄款雪纺风衣女',
+ 'x_price': '169.00-189.00',
+ 'y_price': '248.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'x_price' at row 1")
+2018-07-10 22:04:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i2/1035077136/TB2H6Cbl8yWBuNkSmFPXXXguVXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB2oXXetQOWBuNjSsppXXXPgpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB262R8tb1YBuNjSszhXXcUsFXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB20yQ2kTdYBeNkSmLyXXXfnVXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB2pF_btbSYBuNjSspfXXcZCpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB1BIz1lndYBeNkSmLyXXXfnVXa_!!0-item_pic.jpg',
+ 'name': '早安樊樊 下衣失踪t恤女宽松短袖嘻哈抖音温婉同款韩版上衣潮ins',
+ 'x_price': '',
+ 'y_price': '137.00-174.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'y_price' at row 1")
+2018-07-10 22:04:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i2/1035077136/TB2H6Cbl8yWBuNkSmFPXXXguVXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB2oXXetQOWBuNjSsppXXXPgpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB262R8tb1YBuNjSszhXXcUsFXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB20yQ2kTdYBeNkSmLyXXXfnVXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB2pF_btbSYBuNjSspfXXcZCpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB1BIz1lndYBeNkSmLyXXXfnVXa_!!0-item_pic.jpg',
+ 'name': '早安樊樊 下衣失踪t恤女宽松短袖嘻哈抖音温婉同款韩版上衣潮ins',
+ 'x_price': '',
+ 'y_price': '137.00-174.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'y_price' at row 1")
+2018-07-10 22:04:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i2/1035077136/TB2H6Cbl8yWBuNkSmFPXXXguVXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB2oXXetQOWBuNjSsppXXXPgpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB262R8tb1YBuNjSszhXXcUsFXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB20yQ2kTdYBeNkSmLyXXXfnVXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB2pF_btbSYBuNjSspfXXcZCpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB1BIz1lndYBeNkSmLyXXXfnVXa_!!0-item_pic.jpg',
+ 'name': '早安樊樊 下衣失踪t恤女宽松短袖嘻哈抖音温婉同款韩版上衣潮ins',
+ 'x_price': '',
+ 'y_price': '137.00-174.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'y_price' at row 1")
+2018-07-10 22:04:08 [scrapy.core.scraper] ERROR: Error processing {'imgs_url': '//gd2.alicdn.com/imgextra/i2/1035077136/TB2H6Cbl8yWBuNkSmFPXXXguVXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB2oXXetQOWBuNjSsppXXXPgpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB262R8tb1YBuNjSszhXXcUsFXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB20yQ2kTdYBeNkSmLyXXXfnVXa_!!1035077136.jpg,//gd1.alicdn.com/imgextra/i1/1035077136/TB2pF_btbSYBuNjSspfXXcZCpXa_!!1035077136.jpg,//gd3.alicdn.com/imgextra/i3/1035077136/TB1BIz1lndYBeNkSmLyXXXfnVXa_!!0-item_pic.jpg',
+ 'name': '早安樊樊 下衣失踪t恤女宽松短袖嘻哈抖音温婉同款韩版上衣潮ins',
+ 'x_price': '',
+ 'y_price': '137.00-174.00'}
+Traceback (most recent call last):
+  File "e:\anconda\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\pycharm\spider\ScrapyProjects\taobao\taobao\pipelines.py", line 34, in process_item
+    item['imgs_url']))
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "e:\anconda\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 893, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1103, in _read_query_result
+    result.read()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1396, in read
+    first_packet = self.connection._read_packet()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 1059, in _read_packet
+    packet.check_error()
+  File "e:\anconda\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "e:\anconda\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'y_price' at row 1")
